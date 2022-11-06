@@ -16,8 +16,14 @@ class App extends React.Component {
     }
 
     addCard = card => {
-        const cards = this.state.cards.slice().concat(card);
-        this.setState({cards});
+        card.front = card.front.trim();
+        card.back = card.back.trim();
+        
+        if (card.front !== '' && card.back !== '')
+        {
+            const cards = this.state.cards.slice().concat(card);
+            this.setState({cards});
+        }
     };
 
     deleteCard = index => {
