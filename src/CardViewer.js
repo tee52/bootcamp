@@ -1,4 +1,5 @@
 import React from 'react';
+import './CardViewer.css';
 
 class CardViewer extends React.Component {
     constructor(props) {
@@ -14,23 +15,28 @@ class CardViewer extends React.Component {
     }
 
     nextCard = () => {
-        if (this.state.index < this.props.cards.length) {
-            this.setState({index: this.state.index + 1});
+        if (this.state.index < this.props.cards.length - 1) {
+            this.setState({index: this.state.index + 1, front: true});
         }
         console.log(this.state.index);
     }
-
+    
+    flipCard = () => {
+        this.setState({front: !this.state.front});
+    }
+    
     render() {
         return (
             <div>
                 <h2>Card Viewer</h2>
-                
-                <div>
-
+                <div className="flashcard" onClick={this.flipCard}>
+                    {this.state.front ? this.props.cards[this.state.index].front : this.props.cards[this.state.index].back}
                 </div>
-
-                <button onClick={this.prevCard}>previous card</button>
-                <button onClick={this.nextCard}>next card</button>
+                <div id="container">
+                    <button onClick={this.prevCard}>previous card</button>
+                    <button onClick={this.nextCard}>next card</button>    
+                </div>
+                <p>Card {this.state.index + 1}/{this.props.cards.length}</p>
                 <hr/>
                 <button onClick={this.props.switchMode}>go to card editor</button>
             </div>
