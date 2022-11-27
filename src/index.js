@@ -6,12 +6,12 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from 'react-redux'
 import firebase from 'firebase/compat/app'
-import configureStore from '@reduxjs/toolkit'
-import { combineReducers } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import {
     ReactReduxFirebaseProvider,
     firebaseReducer
 } from 'react-redux-firebase'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCr4uFKAOYL2hRcNn2ykAgnLHHgEG4eILY",
@@ -31,9 +31,7 @@ const rootReducer = combineReducers({
 });
   
 // Create store with reducers and initial state
-const store = configureStore({
-    reducer: rootReducer
-});
+const store = createStore(rootReducer, composeWithDevTools()); 
 
 // react-redux-firebase config
 const rrfConfig = {
