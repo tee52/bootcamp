@@ -11,7 +11,7 @@ class CardViewer extends React.Component {
 
     prevCard = () => {
         if (this.state.index > 0) {
-            this.setState({index: this.state.index - 1});
+            this.setState({index: this.state.index - 1, front: true});
         }
         console.log(this.state.index);
     }
