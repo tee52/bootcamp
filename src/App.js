@@ -49,7 +49,7 @@ class App extends React.Component {
                 <Route exact path="/" element={homepage} />
                 <Route exact path="/editor" element={cardEditor} />
                 <Route exact path="/viewer" element={cardViewer} />
-                <Route exact path="/test/:id" element={test} />
+                <Route exact path="/test" element={test} />
             </Routes>
         );   
     }
