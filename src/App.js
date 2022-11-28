@@ -2,6 +2,7 @@ import React from 'react';
 import CardEditor from './CardEditor';
 import CardViewer from './CardViewer';
 import Homepage from './Homepage';
+import Test from './Test';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -41,12 +42,14 @@ class App extends React.Component {
                             />
         const cardViewer = <CardViewer cards={this.state.cards} />
         const homepage = <Homepage />
+        const test = <Test />
 
         return (
             <Routes>
                 <Route exact path="/" element={homepage} />
                 <Route exact path="/editor" element={cardEditor} />
                 <Route exact path="/viewer" element={cardViewer} />
+                <Route exact path="/test/:id" element={test} />
             </Routes>
         );   
     }
