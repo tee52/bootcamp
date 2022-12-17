@@ -4,7 +4,7 @@ import CardViewer from './CardViewer';
 import Homepage from './Homepage';
 import Test from './Test';
 
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
     constructor(props) {
@@ -35,22 +35,25 @@ class App extends React.Component {
     }
     
     render() {
-        const cardEditor = <CardEditor 
-                                cards={this.state.cards} 
-                                addCard={this.addCard} 
-                                deleteCard={this.deleteCard}
-                            />
-        const cardViewer = <CardViewer cards={this.state.cards} />
-        const homepage = <Homepage />
-        const test = <Test />
-
         return (
-            <Routes>
-                <Route exact path="/" element={homepage} />
-                <Route exact path="/editor" element={cardEditor} />
-                <Route exact path="/viewer" element={cardViewer} />
-                <Route exact path="/test" element={test} />
-            </Routes>
+            <Switch>
+                <Route exact path="/">
+                    <Homepage />
+                </Route>
+                <Route exact path="/editor">
+                    <CardEditor 
+                        cards={this.state.cards} 
+                        addCard={this.addCard} 
+                        deleteCard={this.deleteCard}
+                   />
+                </Route>
+                <Route exact path="/viewer">
+                    <CardViewer cards={this.state.cards} />
+                </Route>
+                <Route path="/test/:id">
+                    <Test />
+                </Route>
+            </Switch>
         );   
     }
 }

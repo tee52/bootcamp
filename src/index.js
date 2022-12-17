@@ -4,9 +4,10 @@ import App from './App';
 
 import { BrowserRouter } from "react-router-dom";
 
-import { Provider } from 'react-redux'
-import firebase from 'firebase/compat/app'
-import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/database';
+import { createStore, combineReducers } from 'redux';
 import {
     ReactReduxFirebaseProvider,
     firebaseReducer
