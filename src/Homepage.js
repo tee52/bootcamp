@@ -38,5 +38,5 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-    firebaseConnect([{ path: `/homepage` }]),
-    connect(mapStateToProps),)(Homepage);;
+    firebaseConnect([{ path: `/homepage` }]), 
+    connect(mapStateToProps),)(Homepage);
