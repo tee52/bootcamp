@@ -41,12 +41,15 @@ class CardEditor extends React.Component {
     createDeck = () => {
         console.log(this.props.firebase.push('/flashcards').key)
         const deckID = this.props.firebase.push('/flashcards').key;
+        const updates = {};
         const newDeck = { cards: this.state.cards, name: this.state.name };
+        updates[`/flashcards/${deckID}`] = newDeck;
+        updates[`/homepage/${deckID}`] = { name: this.state.name };
         const onComplete = () => {
             console.log('database updated');
             this.props.history.push(`/viewer/${deckID}`);
         };
-        this.props.firebase.update(`/flashcards/${deckID}`, newDeck, onComplete);
+        this.props.firebase.update('/', updates, onComplete);
     }
 
     render() {
